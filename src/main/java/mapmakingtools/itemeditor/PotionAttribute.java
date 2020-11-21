@@ -1,5 +1,10 @@
 package mapmakingtools.itemeditor;
 
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
 import mapmakingtools.api.itemeditor.IItemAttribute;
 import mapmakingtools.api.itemeditor.IItemAttributeClient;
 import mapmakingtools.client.screen.widget.ToggleBoxList;
@@ -18,12 +23,8 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtils;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 public class PotionAttribute extends IItemAttribute {
 
@@ -75,7 +76,7 @@ public class PotionAttribute extends IItemAttribute {
                 this.currentPotionList.setValues(PotionUtils.getEffectsFromStack(stack), EffectInstance::toString, this.currentPotionList);
 
                 //this.currentEnchantmentList.set
-                this.addBtn = new Button(x + 60, y + height / 2 - 23, 50, 20, "Add", (btn) -> {
+                this.addBtn = new Button(x + 60, y + height / 2 - 23, 50, 20, new TranslationTextComponent(getTranslationKey("button.add")), (btn) -> {
                     PacketBuffer buf = Util.createBuf();
                     buf.writeByte(0);
                     List<Potion> enchamtments = this.potionList.getGroupManager().getSelected();
@@ -87,7 +88,7 @@ public class PotionAttribute extends IItemAttribute {
                     update.accept(buf);
                 });
 
-                this.removeBtn = new Button(x + 60, y + height - 23, 60, 20, "Remove", (btn) -> {
+                this.removeBtn = new Button(x + 60, y + height - 23, 60, 20, new TranslationTextComponent(getTranslationKey("button.remove")), (btn) -> {
                     PacketBuffer buf = Util.createBuf();
                     buf.writeByte(1);
                     List<EffectInstance> enchamtments = this.currentPotionList.getGroupManager().getSelected();
@@ -101,7 +102,7 @@ public class PotionAttribute extends IItemAttribute {
                     update.accept(buf);
                 });
 
-                this.removeAllBtn = new Button(x + 130, y + height - 23, 130, 20, "Remove all Effects", (btn) -> {
+                this.removeAllBtn = new Button(x + 130, y + height - 23, 130, 20, new TranslationTextComponent(getTranslationKey("button.remove.all")), (btn) -> {
                     PacketBuffer buf = Util.createBuf();
                     buf.writeByte(2);
                     update.accept(buf);
