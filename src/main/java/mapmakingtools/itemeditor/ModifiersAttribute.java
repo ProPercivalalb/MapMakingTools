@@ -287,7 +287,6 @@ public class ModifiersAttribute extends IItemAttribute {
         };
     }
 
-
     public static AttributeModifier.Operation ADD_OPERATION = AttributeModifier.Operation.ADDITION;
     public static AttributeModifier.Operation MULT_PERCENTAGE_OPERATION = AttributeModifier.Operation.MULTIPLY_BASE;
     public static AttributeModifier.Operation ADD_PERCENTAGE_OPERATION = AttributeModifier.Operation.MULTIPLY_TOTAL;

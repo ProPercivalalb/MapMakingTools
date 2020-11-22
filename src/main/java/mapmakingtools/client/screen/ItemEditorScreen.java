@@ -221,7 +221,7 @@ public class ItemEditorScreen extends Screen {
 
             IItemAttribute attribute = this.itemList.get(index);
             IItemAttributeClient client = MMTRegistries.getClientMapping().get(attribute.getRegistryName());
-            Button button = new SmallButton(18, 42 + i * TAB_HEIGHT, 100, TAB_HEIGHT, new TranslationTextComponent(attribute.getTranslationKey()), (btn) -> {
+            Button button = new SmallButton(18, 42 + i * TAB_HEIGHT, 90, TAB_HEIGHT, new TranslationTextComponent(attribute.getTranslationKey()), (btn) -> {
                 Pair<IItemAttribute, IItemAttributeClient> p = Pair.of(attribute, client);
                 ItemEditorScreen.this.selectAttribute(p);
                 ItemEditorScreen.current = Optional.of(p);
